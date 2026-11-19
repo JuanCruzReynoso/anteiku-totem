@@ -1,0 +1,62 @@
+<%- include("partials/head", { title: "Dashboard" }) %>
+<%- include("partials/header") %>
+
+<section class="dash-section">
+    <div class="dash-title">
+        <h2>Productos</h2>
+        <a class="btn btn-primary" href="/dashboard/alta">+ Agregar producto</a>
+    </div>
+
+    <div class="tabs-filter">
+        <button type="button" class="pill active" data-cat="all">Todos</button>
+        <button type="button" class="pill" data-cat="coffee">Cafeteria</button>
+        <button type="button" class="pill" data-cat="merch">Merchandising</button>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Imagen</th><th>Nombre</th><th>Categoria</th><th>Precio</th><th>Estado</th><th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% products.forEach(p => { %>
+                <tr class="<%= p.active ? '' : 'inactivo' %>" data-cat="<%= p.category %>">
+                    <td><img src="<%= p.image %>" alt="<%= p.name %>" class="thumb"></td>
+                    <td><%= p.name %></td>
+                    <td><span class="cat-label"><%= p.category === 'coffee' ? 'Cafeteria' : 'Merchandising' %></span></td>
+                    <td>$ <%= Number(p.price).toLocaleString("es-AR") %></td>
+                    <td><span class="badge <%= p.active ? 'badge-ok' : 'badge-off' %>"><%= p.active ? "Activo" : "Inactivo" %></span></td>
+                    <td class="acciones">
+                        <a class="btn btn-sm btn-outline" href="/dashboard/editar/<%= p.id %>">Editar</a>
+                        <% if (p.active) { %>
+                            <form method="POST" action="/dashboard/productos/<%= p.id %>/activo" class="inline" data-confirm="Desactivar">
+                                <input type="hidden" name="active" value="0">
+                                <button class="btn btn-sm btn-destructive" type="submit">Desactivar</button>
+                            </form>
+                        <% } else { %>
+                            <form method="POST" action="/dashboard/productos/<%= p.id %>/activo" class="inline" data-confirm="Activar">
+                                <input type="hidden" name="active" value="1">
+                                <button class="btn btn-sm btn-ok" type="submit">Activar</button>
+                            </form>
+                        <% } %>
+                    </td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div class="modal-overlay" id="confirmModal">
+    <div class="modal-box">
+        <p id="confirmText">Confirmar</p>
+        <div class="modal-actions">
+            <button class="btn btn-outline" id="cancelBtn">Cancelar</button>
+            <button class="btn" id="okBtn">Confirmar</button>
+        </div>
+    </div>
+</div>
+<%- include("partials/footer") %>
+<script src="/js/dashboard.js"></script>

@@ -1,0 +1,31 @@
+<%- include("partials/head", { title: product ? "Editar producto" : "Alta producto" }) %>
+<%- include("partials/header") %>
+<section class="form-section">
+    <h2><%= product ? "Editar producto" : "Alta de producto" %></h2>
+    <% if (error) { %><p class="error-msg"><%= error %></p><% } %>
+    <form method="POST" action="<%= action %>" enctype="multipart/form-data" class="product-form">
+        <label>Nombre
+            <input type="text" name="name" required minlength="2" value="<%= product ? product.name : '' %>">
+        </label>
+        <label>Precio
+            <input type="number" name="price" step="0.01" min="1" required value="<%= product ? product.price : '' %>">
+        </label>
+        <label>Categoria
+            <select name="category" required>
+                <option value="coffee" <%= product && product.category === 'coffee' ? 'selected' : '' %>>Cafeteria</option>
+                <option value="merch" <%= product && product.category === 'merch' ? 'selected' : '' %>>Merchandising</option>
+            </select>
+        </label>
+        <label>Imagen
+            <% if (product && product.image) { %>
+                <img src="<%= product.image %>" alt="<%= product.name %>" class="img-preview">
+            <% } %>
+            <input type="file" name="image" accept="image/png,image/jpeg,image/webp" <%= product ? '' : 'required' %>>
+        </label>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary"><%= product ? "Guardar cambios" : "Agregar" %></button>
+            <a href="/dashboard" class="btn btn-outline">Cancelar</a>
+        </div>
+    </form>
+</section>
+<%- include("partials/footer") %>
