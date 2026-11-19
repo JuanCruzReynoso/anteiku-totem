@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anteiku - Autoservicio</title>
+    <link rel="icon" href="img/favicon.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/theme.js"></script>
+    <script defer src="js/index.js"></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <img src="img/logo-mono.png" alt="Anteiku">
+            <div>
+                <h1>Anteiku</h1>
+                <span class="students">Juan Cruz Reynoso - Daniela Maigua</span>
+            </div>
+        </div>
+        <nav class="navbar">
+            <button type="button" class="btn-ghost" onclick="toggleTheme()">Tema</button>
+            <a href="http://localhost:3000/login" class="btn-ghost">Admin</a>
+        </nav>
+    </header>
+
+    <main class="welcome">
+        <img src="img/logo-color.png" alt="Anteiku" class="welcome-logo">
+        <h2>Bienvenido a <span id="heroWord">Anteiku</span></h2>
+        <p>Cafeteria &amp; Store - autoservicio</p>
+        <form id="welcomeForm" class="welcome-form">
+            <label for="clientName">Ingresa tu nombre para comenzar</label>
+            <input type="text" id="clientName" autocomplete="off" required minlength="2" placeholder="Tu nombre">
+            <button type="submit" class="btn btn-primary">Continuar</button>
+        </form>
+    </main>
+
+    <script src="js/glitch.js"></script>
+</body>
+</html>

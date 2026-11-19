@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Anteiku</title>
+    <link rel="icon" href="img/favicon.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/theme.js"></script>
+    <script defer src="js/config.js"></script>
+    <script defer src="js/api.js"></script>
+    <script defer src="js/cart.js"></script>
+    <script defer src="js/productos.js"></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <img src="img/logo-mono.png" alt="Anteiku">
+            <div>
+                <h1>Anteiku</h1>
+                <span class="students">Juan Cruz Reynoso - Daniela Maigua</span>
+            </div>
+        </div>
+        <nav class="navbar">
+            <a href="carrito.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" class="nav-icon"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Ver carrito <span class="badge-count" id="cartBadge">0</span></a>
+            <button type="button" class="btn-ghost" onclick="toggleTheme()">Tema</button>
+            <a href="http://localhost:3000/login" class="btn-ghost">Admin</a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <section class="greeting">
+            <h2>Hola, <span id="clientGreeting">cliente</span></h2>
+            <p>Elegi tus productos y sumalos al carrito</p>
+        </section>
+
+        <div class="tabs">
+            <button type="button" class="tab active" data-cat="coffee">Cafeteria</button>
+            <button type="button" class="tab" data-cat="merch">Merchandising</button>
+        </div>
+
+        <section id="productsGrid" class="grid"></section>
+
+        <div class="pagination">
+            <button type="button" id="prevPage" class="btn">Anterior</button>
+            <span id="pageInfo">Pagina 1 de 1</span>
+            <button type="button" id="nextPage" class="btn">Siguiente</button>
+        </div>
+    </main>
+
+</body>
+</html>

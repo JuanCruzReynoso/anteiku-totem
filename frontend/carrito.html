@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Anteiku</title>
+    <link rel="icon" href="img/favicon.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/theme.js"></script>
+    <script defer src="js/config.js"></script>
+    <script defer src="js/api.js"></script>
+    <script defer src="js/cart.js"></script>
+    <script defer src="js/carrito.js"></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <img src="img/logo-mono.png" alt="Anteiku">
+            <div>
+                <h1>Anteiku</h1>
+                <span class="students">Juan Cruz Reynoso - Daniela Maigua</span>
+            </div>
+        </div>
+        <nav class="navbar">
+            <a href="productos.html">Seguir comprando</a>
+            <button type="button" class="btn-ghost" onclick="toggleTheme()">Tema</button>
+            <a href="http://localhost:3000/login" class="btn-ghost">Admin</a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <section class="greeting">
+            <h2>Tu carrito</h2>
+        </section>
+
+        <section id="cartList" class="cart-list"></section>
+
+        <div class="cart-summary">
+            <div class="total-line">
+                <span class="total-label">Total</span>
+                <span class="total-price">$ <span id="cartTotal">0</span></span>
+            </div>
+            <button type="button" id="checkoutBtn" class="btn btn-primary">Finalizar compra</button>
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal-box">
+            <p>Confirmas la compra?</p>
+            <div class="modal-actions">
+                <button type="button" id="cancelBtn" class="btn">Cancelar</button>
+                <button type="button" id="okBtn" class="btn btn-primary">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
